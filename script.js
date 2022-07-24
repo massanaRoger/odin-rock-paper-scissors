@@ -9,14 +9,14 @@ function getComputerChoice() {
 }
 
 function getRoundWinner(playerSelection, computerSelection) {
-    let playerWin = false;
+    let playerWin = 0;
     playerSelection = uppercaseFirstLetter(playerSelection);
     if ((playerSelection === "Rock" && computerSelection === "Scissors") ||
         (playerSelection === "Paper" && computerSelection === "Rock") ||
         (playerSelection === "Scissors" && computerSelection === "Paper")) {
-        playerWin = true;
+        playerWin = 1;
     } else if (playerSelection === computerSelection) {
-        return "It's a tie!";
+        playerWin = -1;
     }
     return playerWin;
         //`You won! ${playerSelection} wins ${computerSelection}` :
@@ -30,9 +30,11 @@ function uppercaseFirstLetter(string) {
 }
 
 function game() {
+    let playerPoints = 0, computerPoints = 0;
     for (let i = 0; i < 5; i++) {
-        let playerPoints, computerPoints;
         const playerSelection = prompt("Rock, paper or scissors?");
-
+        if (getRoundWinner(playerSelection, getComputerChoice()) === 1) {
+            playerPoints++;
+        }
     }
 }
