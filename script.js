@@ -9,18 +9,19 @@ function getComputerChoice() {
 }
 
 function checkPlayerWins(playerSelection, computerSelection) {
-    let playerWin = 0;
+    let playerWin = -1;
     playerSelection = uppercaseFirstLetter(playerSelection);
     if ((playerSelection === "Rock" && computerSelection === "Scissors") ||
         (playerSelection === "Paper" && computerSelection === "Rock") ||
         (playerSelection === "Scissors" && computerSelection === "Paper")) {
         playerWin = 1;
+        console.log(`You won! ${playerSelection} wins ${computerSelection}`);
     } else if (playerSelection === computerSelection) {
-        playerWin = -1;
+        playerWin = 0;
+        console.log("It's a tie!");
     }
+    playerWin !== -1 || console.log(`You lose! ${computerSelection} wins ${playerSelection}`)
     return playerWin;
-        //`You won! ${playerSelection} wins ${computerSelection}` :
-        //`You lose! ${computerSelection} wins ${playerSelection}`;
 }
 
 //Write a function to uppercase the first letter of a string.
@@ -33,8 +34,10 @@ function game() {
     let playerPoints = 0, computerPoints = 0;
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt("Rock, paper or scissors?");
-        if (getRoundWinner(playerSelection, getComputerChoice()) === 1) {
+        if (checkPlayerWins(playerSelection, getComputerChoice()) === 1) {
             playerPoints++;
+        } else if (checkPlayerWins(playerSelection, getComputerChoice()) === -1) {
+            computerPoints++;
         }
     }
 }
