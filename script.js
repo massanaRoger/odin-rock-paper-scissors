@@ -8,7 +8,7 @@ function getComputerChoice() {
     return choices[random];
 }
 
-function getRoundWinner(playerSelection, computerSelection) {
+function checkPlayerWins(playerSelection, computerSelection) {
     let playerWin = 0;
     playerSelection = uppercaseFirstLetter(playerSelection);
     if ((playerSelection === "Rock" && computerSelection === "Scissors") ||
