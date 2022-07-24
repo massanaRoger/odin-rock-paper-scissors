@@ -1,6 +1,4 @@
-const computerChoice = getComputerChoice();
-console.log(computerChoice);
-console.log(getRoundWinner("rock", computerChoice));
+game();
 
 function getComputerChoice() {
     const choices = ["Rock", "Paper", "Scissors"];
@@ -20,7 +18,7 @@ function checkPlayerWins(playerSelection, computerSelection) {
         playerWin = 0;
         console.log("It's a tie!");
     }
-    playerWin !== -1 || console.log(`You lose! ${computerSelection} wins ${playerSelection}`)
+    playerWin !== -1 || console.log(`You lose! ${computerSelection} wins ${playerSelection}`);
     return playerWin;
 }
 
@@ -34,10 +32,18 @@ function game() {
     let playerPoints = 0, computerPoints = 0;
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt("Rock, paper or scissors?");
-        if (checkPlayerWins(playerSelection, getComputerChoice()) === 1) {
+        const playerWins = checkPlayerWins(playerSelection, getComputerChoice())
+        if (playerWins === 1) {
             playerPoints++;
-        } else if (checkPlayerWins(playerSelection, getComputerChoice()) === -1) {
+        } else if (playerWins === -1) {
             computerPoints++;
         }
+    }
+    if (playerPoints > computerPoints) {
+        console.log(`You won! Score: ${playerPoints} vs ${computerPoints}`)
+    } else if (playerPoints < computerPoints) {
+        console.log(`You lose! Score: ${playerPoints} vs ${computerPoints}`)
+    } else {
+        console.log(`It's a tie! Score: ${playerPoints} vs ${computerPoints}`)
     }
 }
