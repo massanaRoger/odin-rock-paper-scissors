@@ -1,6 +1,6 @@
 const computerChoice = getComputerChoice();
 console.log(computerChoice);
-console.log(playRound("Rock", computerChoice));
+console.log(playRound("rock", computerChoice));
 
 function getComputerChoice() {
     const choices = ["Rock", "Paper", "Scissors"];
@@ -10,6 +10,7 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     let playerWin = false;
+    playerSelection = uppercaseFirstLetter(playerSelection);
     if ((playerSelection === "Rock" && computerSelection === "Scissors") ||
         (playerSelection === "Paper" && computerSelection === "Rock") ||
         (playerSelection === "Scissors" && computerSelection === "Paper")) {
@@ -19,4 +20,10 @@ function playRound(playerSelection, computerSelection) {
     }
     return playerWin ? `You won! ${playerSelection} wins ${computerSelection}` :
         `You lose! ${computerSelection} wins ${playerSelection}`;
+}
+
+//Write a function to uppercase the first letter of a string.
+function uppercaseFirstLetter(string) {
+    string.toLowerCase();
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
