@@ -31,7 +31,19 @@ function uppercaseFirstLetter(string) {
 function game() {
     let playerPoints = 0, computerPoints = 0;
     for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("Rock, paper or scissors?");
+        let correctPrompt = false;
+        let playerSelection;
+        while (!correctPrompt) {
+            playerSelection = prompt("Rock, paper or scissors?");
+            const convertedPlayerSelection = uppercaseFirstLetter(playerSelection)
+            if (convertedPlayerSelection === "Rock" ||
+                convertedPlayerSelection === "Paper" ||
+                convertedPlayerSelection === "Scissors") {
+                correctPrompt = true;
+            } else {
+                console.log("Invalid choice, try again!");
+            }
+        }
         const playerWins = checkPlayerWins(playerSelection, getComputerChoice())
         if (playerWins === 1) {
             playerPoints++;
