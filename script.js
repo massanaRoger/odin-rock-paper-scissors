@@ -26,5 +26,11 @@ function checkPlayerWins() {
     return playerWin;
 }
 
+function addPToDOM(elementToBeAdded, message) {
+    const p = document.createElement('p');
+    const text = document.createTextNode(message);
+    p.appendChild(text);
+    elementToBeAdded.appendChild(p);
+}
 
 
