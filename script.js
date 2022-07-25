@@ -26,8 +26,5 @@ function checkPlayerWins() {
     return playerWin;
 }
 
-//Write a function to uppercase the first letter of a string.
-function uppercaseFirstLetter(string) {
-    string.toLowerCase();
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+
+
