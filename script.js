@@ -12,17 +12,18 @@ function getComputerChoice() {
 function checkPlayerWins() {
     const playerSelection = this.textContent;
     const computerSelection = getComputerChoice();
+    const resultsDiv = document.querySelector('.results-container');
     let playerWin = -1;
     if ((playerSelection === "Rock" && computerSelection === "Scissors") ||
         (playerSelection === "Paper" && computerSelection === "Rock") ||
         (playerSelection === "Scissors" && computerSelection === "Paper")) {
         playerWin = 1;
-        console.log(`You won! ${playerSelection} wins ${computerSelection}`);
+        addPToDOM(resultsDiv, `You won! ${playerSelection} wins ${computerSelection}`)
     } else if (playerSelection === computerSelection) {
         playerWin = 0;
-        console.log("It's a tie!");
+        addPToDOM(resultsDiv, "It's a tie!");
     }
-    playerWin !== -1 || console.log(`You lose! ${computerSelection} wins ${playerSelection}`);
+    playerWin !== -1 || addPToDOM(resultsDiv, `You lose! ${computerSelection} wins ${playerSelection}`);
     return playerWin;
 }
 
