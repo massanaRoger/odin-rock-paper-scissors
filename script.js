@@ -21,7 +21,6 @@ function game() {
         button.addEventListener('click', checkPlayerWins);
     });
 
-
     function checkPlayerWins() {
         const playerSelection = this.textContent;
         const computerSelection = getComputerChoice();
@@ -37,8 +36,13 @@ function game() {
             addPToDOM(resultsDiv, `You lose! ${computerSelection} wins ${playerSelection}`);
             computerPoints++;
         }
-        if (i >= 5)
+        if (i >= 5) {
+            document.querySelectorAll('p').forEach(element => {
+                element.remove();
+            })
+            document.querySelector('.button-container').remove();
             displayEndWinner(playerPoints, computerPoints);
+        }
 
     }
 }
