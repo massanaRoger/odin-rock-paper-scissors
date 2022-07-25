@@ -36,6 +36,7 @@ function game() {
             addPToDOM(resultsDiv, `You lose! ${computerSelection} wins ${playerSelection}`);
             computerPoints++;
         }
+        document.querySelector('.scores').textContent = `${playerPoints} vs ${computerPoints}`;
         if (i >= 5) {
             document.querySelectorAll('p').forEach(element => {
                 element.remove();
