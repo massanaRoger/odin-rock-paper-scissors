@@ -1,4 +1,7 @@
-game();
+const buttons = document.querySelectorAll('.play-buttons');
+buttons.forEach(button => {
+    button.addEventListener('click', checkPlayerWins);
+})
 
 function getComputerChoice() {
     const choices = ["Rock", "Paper", "Scissors"];
@@ -6,9 +9,10 @@ function getComputerChoice() {
     return choices[random];
 }
 
-function checkPlayerWins(playerSelection, computerSelection) {
+function checkPlayerWins() {
+    const playerSelection = this.textContent;
+    const computerSelection = getComputerChoice();
     let playerWin = -1;
-    playerSelection = uppercaseFirstLetter(playerSelection);
     if ((playerSelection === "Rock" && computerSelection === "Scissors") ||
         (playerSelection === "Paper" && computerSelection === "Rock") ||
         (playerSelection === "Scissors" && computerSelection === "Paper")) {
@@ -26,36 +30,4 @@ function checkPlayerWins(playerSelection, computerSelection) {
 function uppercaseFirstLetter(string) {
     string.toLowerCase();
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function game() {
-    let playerPoints = 0, computerPoints = 0;
-    for (let i = 0; i < 5; i++) {
-        let correctPrompt = false;
-        let playerSelection;
-        while (!correctPrompt) {
-            playerSelection = prompt("Rock, paper or scissors?");
-            const convertedPlayerSelection = uppercaseFirstLetter(playerSelection)
-            if (convertedPlayerSelection === "Rock" ||
-                convertedPlayerSelection === "Paper" ||
-                convertedPlayerSelection === "Scissors") {
-                correctPrompt = true;
-            } else {
-                console.log("Invalid choice, try again!");
-            }
-        }
-        const playerWins = checkPlayerWins(playerSelection, getComputerChoice())
-        if (playerWins === 1) {
-            playerPoints++;
-        } else if (playerWins === -1) {
-            computerPoints++;
-        }
-    }
-    if (playerPoints > computerPoints) {
-        console.log(`You won! Score: ${playerPoints} vs ${computerPoints}`)
-    } else if (playerPoints < computerPoints) {
-        console.log(`You lose! Score: ${playerPoints} vs ${computerPoints}`)
-    } else {
-        console.log(`It's a tie! Score: ${playerPoints} vs ${computerPoints}`)
-    }
 }
