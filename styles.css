@@ -1,0 +1,62 @@
+/* Add roboto font to everything*/
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v15/2tBY7ijF68oH1TA64kXQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  color: white;
+  font-size: 2.5em;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: dodgerblue;
+  flex-direction: column;
+  gap: 50px;
+  padding-top: 50px;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+img {
+    max-width: 100px;
+    height: auto;
+    padding: 30px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+button {
+  padding: 20px 40px;
+  width: 200px;
+  font-size: 30px;
+  border: 5px solid white;
+  background: transparent;
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+  background: white;
+  color: dodgerblue;
+}
