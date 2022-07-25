@@ -41,8 +41,11 @@ function game() {
         }
         document.querySelector('.scores').textContent = `${playerPoints} vs ${computerPoints}`;
         if (i >= 5) {
-
             document.querySelector('.button-container').remove();
+            document.querySelector('.icons').remove();
+            document.querySelector('.scores').remove();
+            document.body.style.justifyContent = "space-around";
+            winner.classList.replace('winner', 'winner-end');
             displayEndWinner(playerPoints, computerPoints);
         }
 
