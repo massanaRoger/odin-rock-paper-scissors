@@ -1,4 +1,4 @@
-const resultsDiv = document.querySelector('.results-container');
+const winner = document.querySelector('.winner');
 game();
 
 function getComputerChoice() {
@@ -28,19 +28,17 @@ function game() {
         if ((playerSelection === "Rock" && computerSelection === "Scissors") ||
             (playerSelection === "Paper" && computerSelection === "Rock") ||
             (playerSelection === "Scissors" && computerSelection === "Paper")) {
-            addPToDOM(resultsDiv, `You won! ${playerSelection} wins ${computerSelection}`);
+            winner.textContent = `You won! ${playerSelection} wins ${computerSelection}`;
             playerPoints++;
         } else if (playerSelection === computerSelection) {
-            addPToDOM(resultsDiv, "It's a tie!");
+            winner.textContent = "It's a tie!";
         } else {
-            addPToDOM(resultsDiv, `You lose! ${computerSelection} wins ${playerSelection}`);
+            winner.textContent = `You lose! ${computerSelection} wins ${playerSelection}`;
             computerPoints++;
         }
         document.querySelector('.scores').textContent = `${playerPoints} vs ${computerPoints}`;
         if (i >= 5) {
-            document.querySelectorAll('p').forEach(element => {
-                element.remove();
-            })
+
             document.querySelector('.button-container').remove();
             displayEndWinner(playerPoints, computerPoints);
         }
@@ -50,10 +48,10 @@ function game() {
 
 function displayEndWinner(playerPoints, computerPoints) {
     if (playerPoints > computerPoints) {
-        addPToDOM(resultsDiv, `You won! Score: ${playerPoints} vs ${computerPoints}`)
+        winner.textContent = `You won! Score: ${playerPoints} vs ${computerPoints}`;
     } else if (playerPoints < computerPoints) {
-        addPToDOM(resultsDiv, `You lose! Score: ${playerPoints} vs ${computerPoints}`)
+        winner.textContent = `You lose! Score: ${playerPoints} vs ${computerPoints}`;
     } else {
-        addPToDOM(resultsDiv, `It's a tie! Score: ${playerPoints} vs ${computerPoints}`)
+        winner.textContent = `It's a tie! Score: ${playerPoints} vs ${computerPoints}`;
     }
 }
